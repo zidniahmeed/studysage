@@ -35,7 +35,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[var(--bg-gradient)] text-[var(--text-light)] font-sans selection:bg-[var(--cream)] selection:text-[var(--text-dark)] flex flex-col">
       {/* ── Navbar ── */}
-      <nav className="w-full flex items-center justify-between px-8 py-6 z-50">
+      <nav className="w-full flex items-center justify-between px-4 md:px-8 py-6 z-50">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 flex gap-0.5">
             <div className="w-4 h-8 bg-[var(--cream)] rounded-l-full"></div>
@@ -53,44 +53,44 @@ export default function Home() {
       </nav>
 
       {/* ── Hero Section ── */}
-      <section className="flex-1 flex flex-col-reverse lg:flex-row items-center justify-center max-w-7xl mx-auto px-8 py-12 lg:py-20 gap-16 lg:gap-24 relative w-full">
+      <section className="flex-1 flex flex-col-reverse lg:flex-row items-center justify-center max-w-7xl mx-auto px-4 md:px-8 py-10 lg:py-20 gap-10 lg:gap-24 relative w-full">
         
         {/* Glow effect */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--cream)]/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[var(--cream)]/5 rounded-full blur-[80px] md:blur-[120px] pointer-events-none" />
 
         {/* Left Content */}
-        <div className="flex-1 flex flex-col items-start z-10 max-w-2xl">
+        <div className="flex-1 flex flex-col items-start z-10 max-w-2xl mt-4 lg:mt-0">
           <motion.div initial="hidden" animate="show" variants={fadeUp} custom={0}>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-8 border border-[var(--border-color)] bg-[var(--purple-dark)]/50 text-[var(--text-muted)] text-sm font-medium">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 lg:mb-8 border border-[var(--border-color)] bg-[var(--purple-dark)]/50 text-[var(--text-muted)] text-xs md:text-sm font-medium">
               <span className="w-2 h-2 rounded-full bg-[var(--cream)] animate-pulse" />
               Powered by Google Gemini & Text-to-Speech
             </div>
           </motion.div>
 
           <motion.h1 
-            className="text-5xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight"
+            className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-4 lg:mb-6 leading-[1.1] tracking-tight"
             initial="hidden" animate="show" variants={fadeUp} custom={1}
           >
             Study smarter with <span className="text-[var(--cream)]">Ryo.</span>
           </motion.h1>
 
           <motion.p 
-            className="text-lg lg:text-xl mb-10 text-[var(--text-muted)] leading-relaxed max-w-xl"
+            className="text-base sm:text-lg lg:text-xl mb-8 lg:mb-10 text-[var(--text-muted)] leading-relaxed max-w-xl"
             initial="hidden" animate="show" variants={fadeUp} custom={2}
           >
             Your elegant, AI-powered study buddy. Ask questions, generate practice quizzes, and flip interactive flashcards in a distraction-free dark workspace.
           </motion.p>
 
           <motion.div 
-            className="flex flex-col sm:flex-row gap-4"
+            className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
             initial="hidden" animate="show" variants={fadeUp} custom={3}
           >
-            <Link href="/chat">
-              <button className="btn-cream px-8 py-4 flex items-center gap-2 text-base shadow-lg shadow-[var(--cream)]/10 hover:shadow-[var(--cream)]/20 transition-all">
+            <Link href="/chat" className="w-full sm:w-auto">
+              <button className="w-full sm:w-auto btn-cream px-8 py-4 flex items-center justify-center gap-2 text-sm sm:text-base shadow-lg shadow-[var(--cream)]/10 hover:shadow-[var(--cream)]/20 transition-all">
                 Start Studying Free <ArrowRight size={18} />
               </button>
             </Link>
-            <a href="#features" className="px-8 py-4 rounded-full font-medium text-[var(--text-light)] bg-[var(--purple-dark)] border border-[var(--border-color)] hover:bg-white/5 transition-all text-center">
+            <a href="#features" className="w-full sm:w-auto px-8 py-4 rounded-full font-medium text-[var(--text-light)] bg-[var(--purple-dark)] border border-[var(--border-color)] hover:bg-white/5 transition-all text-center text-sm sm:text-base">
               Explore Features
             </a>
           </motion.div>
@@ -98,13 +98,13 @@ export default function Home() {
 
         {/* Right Content - Mockup Avatar */}
         <motion.div 
-          className="relative z-10 w-full max-w-sm lg:max-w-md"
+          className="relative z-10 w-full max-w-[280px] sm:max-w-sm lg:max-w-md mx-auto"
           initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div className="avatar-glow relative aspect-square rounded-[3rem] overflow-hidden border border-[var(--border-color)] bg-[var(--purple-dark)]/50 shadow-2xl backdrop-blur-sm p-4">
-            <div className="w-full h-full rounded-[2.5rem] overflow-hidden bg-[var(--bg-gradient)] relative">
+          <div className="avatar-glow relative aspect-square rounded-[2rem] lg:rounded-[3rem] overflow-hidden border border-[var(--border-color)] bg-[var(--purple-dark)]/50 shadow-2xl backdrop-blur-sm p-3 lg:p-4">
+            <div className="w-full h-full rounded-[1.5rem] lg:rounded-[2.5rem] overflow-hidden bg-[var(--bg-gradient)] relative">
               <Image 
                 src="/ryo-avatar.png" 
                 alt="Ryo - Study Sensei" 
@@ -113,8 +113,8 @@ export default function Home() {
                 priority
               />
               {/* Fake UI overlays on the avatar container to show it's an app */}
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-[var(--cream)] text-[var(--text-dark)] px-4 py-2 rounded-full text-xs font-bold shadow-lg flex items-center gap-2">
-                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" /> AI Sensei Online
+              <div className="absolute bottom-4 lg:bottom-6 left-1/2 -translate-x-1/2 bg-[var(--cream)] text-[var(--text-dark)] px-3 lg:px-4 py-1.5 lg:py-2 rounded-full text-[10px] lg:text-xs font-bold shadow-lg flex items-center gap-1.5 lg:gap-2 whitespace-nowrap">
+                <span className="w-1.5 h-1.5 lg:w-2 lg:h-2 bg-green-500 rounded-full animate-pulse" /> AI Sensei Online
               </div>
             </div>
           </div>
@@ -122,23 +122,23 @@ export default function Home() {
       </section>
 
       {/* ── Features Section ── */}
-      <section id="features" className="w-full bg-[var(--purple-dark)]/30 border-t border-[var(--border-color)] py-24 relative z-10">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section id="features" className="w-full bg-[var(--purple-dark)]/30 border-t border-[var(--border-color)] py-16 lg:py-24 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {features.map((f, i) => (
               <motion.div 
                 key={i}
-                className="bg-[var(--purple-dark)]/50 border border-[var(--border-color)] p-8 rounded-3xl hover:bg-white/5 transition-colors"
+                className="bg-[var(--purple-dark)]/50 border border-[var(--border-color)] p-6 lg:p-8 rounded-2xl lg:rounded-3xl hover:bg-white/5 transition-colors"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
               >
-                <div className="w-12 h-12 rounded-2xl bg-[var(--cream)] text-[var(--text-dark)] flex items-center justify-center mb-6 shadow-sm">
+                <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-xl lg:rounded-2xl bg-[var(--cream)] text-[var(--text-dark)] flex items-center justify-center mb-5 lg:mb-6 shadow-sm">
                   {f.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-3">{f.title}</h3>
-                <p className="text-[var(--text-muted)] leading-relaxed">{f.desc}</p>
+                <h3 className="text-lg lg:text-xl font-bold mb-2 lg:mb-3">{f.title}</h3>
+                <p className="text-sm lg:text-base text-[var(--text-muted)] leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
           </div>

@@ -1,7 +1,7 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, BookOpen, Zap, Layers, Plus, Mic, HelpCircle, Settings, MessageSquare, Briefcase, FileText, Volume2, VolumeX } from "lucide-react";
+import { Send, BookOpen, Zap, Layers, Plus, Mic, HelpCircle, Settings, MessageSquare, Briefcase, FileText, Volume2, VolumeX, ChevronDown } from "lucide-react";
 import ChatBubble, { Message } from "@/components/ChatBubble";
 import FlashcardView from "@/components/FlashcardView";
 import Ryo3D from "@/components/Ryo3D";
@@ -62,7 +62,7 @@ export default function ChatPage() {
   };
 
   return (
-    <div className="w-screen h-screen flex flex-col md:flex-row bg-[var(--bg-gradient)] text-[var(--text-light)] overflow-hidden font-sans">
+    <div className="w-screen h-[100dvh] flex flex-col md:flex-row bg-[var(--bg-gradient)] text-[var(--text-light)] overflow-hidden font-sans">
       
       {/* ── LEFT COLUMN: Sidebar ── */}
       <div className="hidden md:flex flex-col w-[260px] h-full py-8 px-6 border-r border-[var(--border-color)]">
@@ -109,10 +109,26 @@ export default function ChatPage() {
 
       {/* ── CENTER COLUMN: Main Chat Area ── */}
       <div className="flex-1 flex flex-col relative h-full max-w-4xl mx-auto">
-        {/* Top bar mobile only */}
-        <div className="md:hidden flex items-center justify-between p-4 border-b border-[var(--border-color)]">
-          <Link href="/" className="font-bold hover:opacity-80 transition-opacity">StudySage</Link>
-          <span className="text-xs uppercase bg-white/10 px-2 py-1 rounded-md">{mode}</span>
+        {/* Top bar (Mobile & Tablet) */}
+        <div className="lg:hidden flex items-center justify-between p-4 border-b border-[var(--border-color)] shrink-0">
+          <Link href="/" className="font-bold hover:opacity-80 transition-opacity md:hidden">StudySage</Link>
+          <div className="flex items-center gap-3 ml-auto">
+            <div className="relative">
+              <select
+                value={mode}
+                onChange={(e) => setMode(e.target.value as Mode)}
+                className="appearance-none text-xs uppercase bg-white/10 hover:bg-white/20 pl-3 pr-7 py-1.5 rounded-md outline-none cursor-pointer border border-[var(--border-color)] font-medium transition-colors"
+              >
+                <option value="explain" className="text-black">Explain</option>
+                <option value="quiz" className="text-black">Quiz</option>
+                <option value="flashcard" className="text-black">Flashcards</option>
+              </select>
+              <ChevronDown size={12} className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none opacity-70" />
+            </div>
+            <div className={`w-10 h-10 rounded-full overflow-hidden border border-[var(--border-color)] transition-all bg-[var(--purple-dark)] ${globalSpeaking ? "animate-talking border-[var(--cream)] shadow-[0_0_10px_rgba(253,246,233,0.3)]" : ""}`}>
+              <Ryo3D isSpeaking={globalSpeaking} />
+            </div>
+          </div>
         </div>
 
         {/* Top Spacer */}
