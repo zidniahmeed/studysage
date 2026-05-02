@@ -129,11 +129,7 @@ export default function ChatPage() {
               {messages.map((msg, index) =>
                 mode === "flashcard" && msg.role === "assistant" && msg.text.includes("FRONT:") ? (
                   <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} key={msg.id} className="w-full flex justify-start mb-6">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-2xl">
-                      {msg.text.split("\n\n").map((cardText, i) => (
-                        <FlashcardView key={i} content={cardText} />
-                      ))}
-                    </div>
+                    <FlashcardView text={msg.text} />
                   </motion.div>
                 ) : (
                   <ChatBubble 
