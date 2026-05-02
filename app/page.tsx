@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
-import { BookOpen, Zap, Layers } from "lucide-react";
+import { BookOpen, Zap, Layers, ArrowRight } from "lucide-react";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -15,224 +15,139 @@ const fadeUp: Variants = {
 
 const features = [
   {
-    icon: <BookOpen size={28} />,
-    title: "Ask Anything",
+    icon: <BookOpen size={24} />,
+    title: "Explain Anything",
     desc: "From quantum physics to world history — Ryo explains every topic with clarity and helpful analogies.",
   },
   {
-    icon: <Zap size={28} />,
+    icon: <Zap size={24} />,
     title: "Generate Quizzes",
-    desc: "Switch to Quiz mode and Ryo instantly creates 3 practice questions on any topic to test your understanding.",
+    desc: "Switch to Quiz mode and Ryo instantly creates practice questions on any topic to test your understanding.",
   },
   {
-    icon: <Layers size={28} />,
-    title: "Build Flashcards",
-    desc: "Paste your study material and Ryo transforms it into interactive flip-cards you can use for rapid revision.",
+    icon: <Layers size={24} />,
+    title: "Smart Flashcards",
+    desc: "Paste your study material and Ryo transforms it into interactive 3D flip-cards for rapid revision.",
   },
 ];
 
 export default function Home() {
   return (
-    <main
-      style={{ background: "var(--bg)", minHeight: "100vh" }}
-      className="overflow-x-hidden"
-    >
+    <main className="min-h-screen bg-[var(--bg-gradient)] text-[var(--text-light)] font-sans selection:bg-[var(--cream)] selection:text-[var(--text-dark)] flex flex-col">
       {/* ── Navbar ── */}
-      <nav
-        style={{
-          borderBottom: "1px solid var(--border)",
-          background: "rgba(8,13,26,0.85)",
-          backdropFilter: "blur(12px)",
-        }}
-        className="sticky top-0 z-50 flex items-center justify-between px-6 py-4"
-      >
+      <nav className="w-full flex items-center justify-between px-8 py-6 z-50">
         <div className="flex items-center gap-3">
-          <Image src="/logo.png" alt="StudySage logo" width={36} height={36} className="rounded" />
-          <span className="text-xl font-bold" style={{ color: "var(--primary)" }}>
+          <div className="w-8 h-8 flex gap-0.5">
+            <div className="w-4 h-8 bg-[var(--cream)] rounded-l-full"></div>
+            <div className="w-4 h-8 bg-[var(--cream)] rounded-r-full opacity-60"></div>
+          </div>
+          <span className="text-xl font-bold tracking-tight text-[var(--cream)]">
             StudySage
           </span>
         </div>
-        <Link href="/chat" id="nav-cta">
-          <button className="btn-primary text-sm">Chat with Ryo →</button>
+        <Link href="/chat">
+          <button className="px-6 py-2.5 rounded-full text-sm font-medium transition-all hover:scale-105 bg-white/10 hover:bg-white/20 border border-[var(--border-color)]">
+            Go to App
+          </button>
         </Link>
       </nav>
 
-      {/* ── Hero ── */}
-      <section className="relative flex flex-col-reverse md:flex-row items-center justify-between max-w-6xl mx-auto px-6 pt-16 pb-24 gap-12">
-        {/* Glow blob */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 60% 50% at 70% 40%, rgba(201,168,76,0.08) 0%, transparent 70%)",
-          }}
-        />
+      {/* ── Hero Section ── */}
+      <section className="flex-1 flex flex-col-reverse lg:flex-row items-center justify-center max-w-7xl mx-auto px-8 py-12 lg:py-20 gap-16 lg:gap-24 relative w-full">
+        
+        {/* Glow effect */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--cream)]/5 rounded-full blur-[120px] pointer-events-none" />
 
-        {/* Left — Text */}
-        <div className="flex-1 z-10">
-          <motion.div
-            initial="hidden"
-            animate="show"
-            variants={fadeUp}
-            custom={0}
-          >
-            <span
-              className="inline-block text-sm font-semibold px-3 py-1 rounded-full mb-6"
-              style={{ background: "var(--primary-glow)", color: "var(--primary)", border: "1px solid var(--primary-dim)" }}
-            >
-              ⚔️ Powered by Google Gemini
-            </span>
+        {/* Left Content */}
+        <div className="flex-1 flex flex-col items-start z-10 max-w-2xl">
+          <motion.div initial="hidden" animate="show" variants={fadeUp} custom={0}>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-8 border border-[var(--border-color)] bg-[var(--purple-dark)]/50 text-[var(--text-muted)] text-sm font-medium">
+              <span className="w-2 h-2 rounded-full bg-[var(--cream)] animate-pulse" />
+              Powered by Google Gemini & Text-to-Speech
+            </div>
           </motion.div>
 
-          <motion.h1
-            className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight"
+          <motion.h1 
+            className="text-5xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight"
             initial="hidden" animate="show" variants={fadeUp} custom={1}
           >
-            Meet <span className="gradient-text">Ryo</span>,<br />
-            Your AI Study<br />Sensei
+            Study smarter with <span className="text-[var(--cream)]">Ryo.</span>
           </motion.h1>
 
-          <motion.p
-            className="text-lg mb-10 max-w-lg"
-            style={{ color: "var(--text-muted)" }}
+          <motion.p 
+            className="text-lg lg:text-xl mb-10 text-[var(--text-muted)] leading-relaxed max-w-xl"
             initial="hidden" animate="show" variants={fadeUp} custom={2}
           >
-            Ask questions, generate practice quizzes, or turn your study notes into flashcards —
-            Ryo is always ready to help you study smarter.
+            Your elegant, AI-powered study buddy. Ask questions, generate practice quizzes, and flip interactive flashcards in a distraction-free dark workspace.
           </motion.p>
 
-          <motion.div
-            className="flex gap-4 flex-wrap"
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4"
             initial="hidden" animate="show" variants={fadeUp} custom={3}
           >
-            <Link href="/chat" id="hero-cta-primary">
-              <button className="btn-primary text-base px-8 py-4">
-                Start Studying with Ryo →
+            <Link href="/chat">
+              <button className="btn-cream px-8 py-4 flex items-center gap-2 text-base shadow-lg shadow-[var(--cream)]/10 hover:shadow-[var(--cream)]/20 transition-all">
+                Start Studying Free <ArrowRight size={18} />
               </button>
             </Link>
-            <a
-              href="#features"
-              id="hero-cta-secondary"
-              className="inline-flex items-center px-8 py-4 rounded-lg font-semibold text-base transition-colors"
-              style={{
-                border: "1px solid var(--border)",
-                color: "var(--text-muted)",
-              }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--primary-dim)"; (e.currentTarget as HTMLElement).style.color = "var(--primary)"; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--border)"; (e.currentTarget as HTMLElement).style.color = "var(--text-muted)"; }}
-            >
-              See Features
+            <a href="#features" className="px-8 py-4 rounded-full font-medium text-[var(--text-light)] bg-[var(--purple-dark)] border border-[var(--border-color)] hover:bg-white/5 transition-all text-center">
+              Explore Features
             </a>
           </motion.div>
         </div>
 
-        {/* Right — Ryo */}
-        <motion.div
-          className="flex-1 flex justify-center z-10"
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
+        {/* Right Content - Mockup Avatar */}
+        <motion.div 
+          className="relative z-10 w-full max-w-sm lg:max-w-md"
+          initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div
-            className="relative animate-float"
-            style={{
-              borderRadius: "24px",
-              padding: "4px",
-              background: "linear-gradient(135deg, var(--primary-dim), transparent)",
-            }}
-          >
-            <div
-              className="animate-pulse-glow"
-              style={{ borderRadius: "22px", overflow: "hidden" }}
-            >
-              <Image
-                src="/ryo-avatar.png"
-                alt="Ryo — AI Study Sensei"
-                width={380}
-                height={380}
-                className="object-cover"
+          <div className="avatar-glow relative aspect-square rounded-[3rem] overflow-hidden border border-[var(--border-color)] bg-[var(--purple-dark)]/50 shadow-2xl backdrop-blur-sm p-4">
+            <div className="w-full h-full rounded-[2.5rem] overflow-hidden bg-[var(--bg-gradient)] relative">
+              <Image 
+                src="/ryo-avatar.png" 
+                alt="Ryo - Study Sensei" 
+                fill 
+                className="object-cover object-top opacity-90 hover:opacity-100 transition-opacity duration-500 scale-105" 
                 priority
               />
-            </div>
-            {/* Badge */}
-            <div
-              className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full text-sm font-bold whitespace-nowrap"
-              style={{ background: "var(--primary)", color: "#080D1A" }}
-            >
-              ⚔️ Ryo — AI Study Sensei
+              {/* Fake UI overlays on the avatar container to show it's an app */}
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-[var(--cream)] text-[var(--text-dark)] px-4 py-2 rounded-full text-xs font-bold shadow-lg flex items-center gap-2">
+                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" /> AI Sensei Online
+              </div>
             </div>
           </div>
         </motion.div>
       </section>
 
-      {/* ── Features ── */}
-      <section id="features" className="max-w-6xl mx-auto px-6 pb-28">
-        <motion.h2
-          className="text-3xl font-bold text-center mb-14"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          What <span className="gradient-text">Ryo</span> Can Do
-        </motion.h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {features.map((f, i) => (
-            <motion.div
-              key={f.title}
-              className="card"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-            >
-              <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-                style={{ background: "var(--primary-glow)", color: "var(--primary)" }}
+      {/* ── Features Section ── */}
+      <section id="features" className="w-full bg-[var(--purple-dark)]/30 border-t border-[var(--border-color)] py-24 relative z-10">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {features.map((f, i) => (
+              <motion.div 
+                key={i}
+                className="bg-[var(--purple-dark)]/50 border border-[var(--border-color)] p-8 rounded-3xl hover:bg-white/5 transition-colors"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
               >
-                {f.icon}
-              </div>
-              <h3 className="text-lg font-bold mb-2">{f.title}</h3>
-              <p style={{ color: "var(--text-muted)", lineHeight: "1.7" }}>{f.desc}</p>
-            </motion.div>
-          ))}
+                <div className="w-12 h-12 rounded-2xl bg-[var(--cream)] text-[var(--text-dark)] flex items-center justify-center mb-6 shadow-sm">
+                  {f.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-3">{f.title}</h3>
+                <p className="text-[var(--text-muted)] leading-relaxed">{f.desc}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ── CTA Banner ── */}
-      <section className="max-w-4xl mx-auto px-6 pb-28">
-        <motion.div
-          className="rounded-2xl p-12 text-center"
-          style={{
-            background: "linear-gradient(135deg, var(--bg-surface), var(--accent))",
-            border: "1px solid var(--primary-dim)",
-            boxShadow: "0 0 60px var(--primary-glow)",
-          }}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl font-extrabold mb-4">
-            Ready to study <span className="gradient-text">smarter</span>?
-          </h2>
-          <p style={{ color: "var(--text-muted)" }} className="mb-8 text-lg">
-            Ryo is waiting. No sign-up needed — just start chatting.
-          </p>
-          <Link href="/chat" id="cta-banner-btn">
-            <button className="btn-primary text-lg px-10 py-4">
-              Open Chat with Ryo ⚔️
-            </button>
-          </Link>
-        </motion.div>
-      </section>
-
       {/* ── Footer ── */}
-      <footer
-        className="text-center py-8 text-sm"
-        style={{ color: "var(--text-muted)", borderTop: "1px solid var(--border)" }}
-      >
-        © 2026 StudySage — Built with Next.js & Google Gemini · Character: Ryo the AI Sensei
+      <footer className="w-full text-center py-8 text-[var(--text-muted)] text-sm border-t border-[var(--border-color)] relative z-10 bg-[var(--bg-gradient)]">
+        <p>© {new Date().getFullYear()} StudySage. Built with Next.js, Framer Motion & Google Gemini.</p>
       </footer>
     </main>
   );
