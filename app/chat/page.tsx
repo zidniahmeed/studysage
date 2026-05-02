@@ -5,6 +5,7 @@ import { Send, BookOpen, Zap, Layers, Plus, Mic, HelpCircle, Settings, MessageSq
 import ChatBubble, { Message } from "@/components/ChatBubble";
 import FlashcardView from "@/components/FlashcardView";
 import Ryo3D from "@/components/Ryo3D";
+import Link from "next/link";
 import Image from "next/image";
 
 type Mode = "explain" | "quiz" | "flashcard";
@@ -66,15 +67,15 @@ export default function ChatPage() {
       {/* ── LEFT COLUMN: Sidebar ── */}
       <div className="hidden md:flex flex-col w-[260px] h-full py-8 px-6 border-r border-[var(--border-color)]">
         {/* Logo */}
-        <div className="flex items-center gap-2 mb-10">
+        <Link href="/" className="flex items-center gap-2 mb-10 hover:opacity-80 transition-opacity">
           <div className="w-10 h-10 flex gap-0.5">
             <div className="w-5 h-10 bg-white rounded-l-full"></div>
             <div className="w-5 h-10 bg-white rounded-r-full opacity-60"></div>
           </div>
           <span className="text-xl font-bold tracking-tight">StudySage</span>
-        </div>
+        </Link>
 
-        {/* New Chat Button */}
+        {/* New Chat Button
         <button 
           onClick={() => {
             setMessages([]);
@@ -83,7 +84,7 @@ export default function ChatPage() {
           className="w-full btn-cream py-2.5 flex items-center justify-center gap-2 mb-10 text-sm"
         >
           <Plus size={16} /> New Session
-        </button>
+        </button> */}
 
         {/* Navigation List */}
         <div className="flex flex-col gap-1 flex-1">
@@ -99,8 +100,10 @@ export default function ChatPage() {
         </div>
 
         {/* Bottom stats/icons */}
-        <div className="flex items-center gap-3 mt-auto border-t border-[var(--border-color)] pt-6">
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--purple-dark)] text-xs text-[var(--text-muted)]"><MessageSquare size={12} /> {messages.length} Messages</div>
+        <div className="flex items-center justify-center w-full mt-auto border-t border-[var(--border-color)] pt-6 pb-2">
+          <div className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-[var(--purple-dark)] text-xs font-medium text-[var(--text-muted)] border border-[var(--border-color)]">
+            <MessageSquare size={14} /> {messages.length} Messages
+          </div>
         </div>
       </div>
 
@@ -108,7 +111,7 @@ export default function ChatPage() {
       <div className="flex-1 flex flex-col relative h-full max-w-4xl mx-auto">
         {/* Top bar mobile only */}
         <div className="md:hidden flex items-center justify-between p-4 border-b border-[var(--border-color)]">
-          <span className="font-bold">StudySage</span>
+          <Link href="/" className="font-bold hover:opacity-80 transition-opacity">StudySage</Link>
           <span className="text-xs uppercase bg-white/10 px-2 py-1 rounded-md">{mode}</span>
         </div>
 

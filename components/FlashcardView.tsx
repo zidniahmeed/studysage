@@ -30,8 +30,7 @@ function FlipCard({ card, index }: { card: Flashcard; index: number }) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.08 }}
-      className={`flashcard-wrapper ${flipped ? "flipped" : ""}`}
-      style={{ height: "140px" }}
+      className={`flashcard-wrapper h-full ${flipped ? "flipped" : ""}`}
       onClick={() => setFlipped(!flipped)}
     >
       <div className="flashcard-inner">
